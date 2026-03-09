@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリックサーチへ移動します</title>
+    <style>
+        /* 画面のデザイン（CSS） */
+        body {
+            font-family: 'Segoe UI', Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .notice-box {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            text-align: left;
+            font-size: 0.9em;
+            color: #854d0e;
+        }
+
+        .main-message {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            margin-bottom: 25px;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .footer-options {
+            text-align: left;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .help-link {
+            display: block;
+            margin-top: 15px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .help-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 【1】自動リダイレクト処理
+        // ページ読み込み時に、ブラウザの保存領域（localStorage）を確認します。
+        const targetUrl = "https://www.clicksearch.jp/clicksearch/index.php";
+        if (localStorage.getItem("skipClickSearchRedirect") === "true") {
+            // チェックが入っていた場合は、画面を表示せずに即座に遷移します
+            window.location.replace(targetUrl);
+        }
+
+        // // 【2】遷移時の状態保存処理
+        // // ボタンがクリックされた時に実行される関数です。
+        // function savePreferenceAndRedirect() {
+        //     const checkbox = document.getElementById("skipCheckbox");
+        //     // チェックボックスにチェックが入っていれば、localStorageに記録します
+        //     if (checkbox && checkbox.checked) {
+        //         localStorage.setItem("skipClickSearchRedirect", "true");
+        //     }
+        }
+    </script>
+
+    <div class="container">
+        <div class="notice-box">
+            <strong>【注意事項】</strong><br>
+            これより先は、外部のサービスサイトへ移動します。
+        </div>
+
+        <div class="main-message">
+            クリックサーチへのログインはこちら
+        </div>
+
+        <a href="https://www.clicksearch.jp/clicksearch/index.php" class="btn" onclick="savePreferenceAndRedirect()">
+            クリックサーチを開く
+        </a>
+
+        <div class="footer-options">
+            <label style="cursor: pointer;">
+                <input type="checkbox" id="skipCheckbox">
+                次からこのページを表示しない
+            </label>
+
+            <a href="https://knowledgesuite.zendesk.com/hc/article_attachments/35957151195545"
+                class="help-link">マニュアルはこちら</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
