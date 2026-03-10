@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>クリックサーチへ移動します</title>
     <style>
-        /* 画面のデザイン（CSS） */
+        /* 画面全体のデザイン */
         body {
             font-family: 'Segoe UI', Meiryo, sans-serif;
             display: flex;
@@ -27,20 +27,18 @@
             width: 90%;
             text-align: center;
         }
-        /* --- 【新規追加】ロゴエリアのスタイル --- */
+
+        /* --- ロゴエリアのスタイル --- */
         .logo-container {
             margin-bottom: 30px; /* ロゴの下の余白 */
         }
-        <img src="logo.png" alt="サービスのロゴ" class="logo-image">
-        
-        /* 【方法A】ロゴ画像ファイルを使用する場合 */
+
         .logo-image {
             max-width: 200px; /* ロゴの最大幅 */
-            height: auto;     /* 高さは自動調整 */
+            height: auto;
             display: block;
-            margin: 0 auto;   /* 中央配置 */
+            margin: 0 auto;
         }
-        /* -------------------------------------- */
         
         .notice-box {
             background-color: #fefce8;
@@ -98,19 +96,13 @@
 <body>
 
     <script>
-        // 【1】自動リダイレクト処理
-        // ページ読み込み時に、ブラウザの保存領域（localStorage）を確認します。
         const targetUrl = "https://www.clicksearch.jp/clicksearch/index.php";
         if (localStorage.getItem("skipClickSearchRedirect") === "true") {
-            // チェックが入っていた場合は、画面を表示せずに即座に遷移します
             window.location.replace(targetUrl);
         }
 
-        // 【2】遷移時の状態保存処理
-        // ボタンがクリックされた時に実行される関数です。
         function savePreferenceAndRedirect() {
             const checkbox = document.getElementById("skipCheckbox");
-            // チェックボックスにチェックが入っていれば、localStorageに記録します
             if (checkbox && checkbox.checked) {
                 localStorage.setItem("skipClickSearchRedirect", "true");
             }
@@ -118,6 +110,10 @@
     </script>
 
     <div class="container">
+        <div class="logo-container">
+            <img src="logo.png" alt="サービスのロゴ" class="logo-image">
+        </div>
+
         <div class="notice-box">
             <strong>【注意事項】</strong><br>
             これより先は、外部のサービスサイトへ移動します。
@@ -146,7 +142,4 @@
     </div>
 
 </body>
-
 </html>
-
-
