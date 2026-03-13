@@ -97,6 +97,15 @@
 
     <script>
         const targetUrl = "https://www.clicksearch.jp/clicksearch/index.php";
+
+        // 【追加】URLの末尾に ?reset=1 がついていたら設定を消去する
+        if (window.location.search.includes("reset=1")) {
+            localStorage.removeItem("skipClickSearchRedirect");
+            alert("自動リダイレクト設定をリセットしました。");
+            // URLから ?reset=1 を取り除いて再読み込み
+            window.location.href = window.location.pathname;
+        }
+        
         if (localStorage.getItem("skipClickSearchRedirect") === "true") {
             window.location.replace(targetUrl);
         }
@@ -144,6 +153,7 @@
 
 </body>
 </html>
+
 
 
 
